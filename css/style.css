@@ -1,4 +1,3 @@
-
 body {
     padding: 0;
     min-height: 100vh;
@@ -7,17 +6,6 @@ body {
     background-color: #f1eeee;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #e9e8e8;
-    font-weight: bold;
-    background: #3d4f69;
-    text-align: center;
 }
 
 .container {
@@ -33,10 +21,23 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex: 33.33%;
-    max-width: 33.33%;
+    flex: 1 0 auto;
+    position: static;
+    max-width: 33%;
     height: 100vh;
-    background: url('../imgs/lydia-mailloux-2sdU_cEOfd8-unsplash.jpg') no-repeat center center;
+    min-height: 900px;
+    background: url('../imgs/lydia2.jpg') no-repeat center center;
+}
+
+.container-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    max-width: 67%;
+    min-height: 100vh;
+    background: url('../imgs/world3.webp') no-repeat center center;
+    background-size: cover;
+
 }
 
 .logo {
@@ -46,7 +47,7 @@ body {
     margin-top: 50%;
     width: 100%;
     padding: 0;
-    background-color: rgba(0,0,0,0.09);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 @font-face {
@@ -59,7 +60,7 @@ body {
     font-size: 6rem;
     margin: 30px;
     font-weight: bolder;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .logo img {
@@ -67,37 +68,77 @@ body {
     max-height: 127px;
 }
 
-.container-right {
-    min-height: 100vh;
+.hero {
     display: flex;
     flex-direction: column;
-    flex: 67.67%;
-    max-width: 67.67%;
-    background-color: #3d4f69;
+    justify-content: center;
+    align-items: center;
+    padding-left: 45px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding-top: 100px;
+
+}
+
+.main-right {
+    flex: 1 0 auto;
 }
 
 .form-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    padding: 50px;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 45px;
+    margin-bottom: 45px;
+    font-size: 1.25rem;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+}
+
+.form-rows {
+    display: flex;
+    flex-direction: row;
+    gap: 90px;
+
+}
+
+.credit,
+.credit a {
+    font-size: .8rem;
+    color: #e9e8e8;
+}
+
+.footer {
+    color: black;
 }
 
 /* Sticky Footer and credit */
-.footer, .credit {
-    display: flex;    
+.footer,
+.credit {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    color: #e9e8e8;
-    height: 90px;
+    height: 75px;
     font-weight: bold;
 }
 
-.credit a {
-    color: #e9e8e8;
-}
 
 /* for implementing media queries in the future */
 
