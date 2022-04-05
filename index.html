@@ -10,13 +10,79 @@
     <title>Register</title>
 </head>
 <body>
-    <header class="header"></header>
     <main class="container">
-        <div class="container-left"></div>
-        <div class="container-right"></div>
+        <div class="container-left">
+            <div class="logo">
+                <img src="imgs/odin-lined.png" alt="logo of the Odin project">
+                <p>ODIN</p>
+            </div>
+            <div class="credit">
+                <p>Photo by <a href="https://unsplash.com/@lydia_mailloux">Lydia Mailloux </a>on
+                <a href="https://unsplash.com/photos/2sdU_cEOfd8" target="_blank"> Unsplash</a></p>
+            </div>
+        </div>
+        <div class="container-right">
+            <div class="main-right">
+            <div class="hero">
+                    <p>This is not a real online service! but you know you want to register, right?<br>
+                        We have a wide variety of packages to choose from
+                    </p>
+                    <p>Sign up <i>now </i>to get started... <i>Adventure Awaits!!</i></p>
+            </div>
+            <div class="form-container">
+                <form action="/" method="post">
+                    <div class="form-rows">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" name="first-name" id="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" name="last-name" id="last-name" required>
+                        </div>                    
+                    </div>
+                    <div class="form-rows">
+                        <div class="form-group">
+                            <label for="email">EMAIL</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>                           
+                        <div class="form-group">
+                            <label for="phone-number">Phone Number</label>
+                            <input type="tel" name="phone-number" id="phone-number" required>
+                        </div>            
+                    </div>
+                    <div class="form-rows">
+                        <div class="form-group">
+                            <label for="password">Password<i class="far fa-eye togglePassword"> Show</i></label>
+                            <input type="password" name="password" id="password" required>
+                            <ul id="password-feedback">
+                                <li id="8-char">At least 8 character</li>
+                                <li id="special-char">1 Special character: @_!#$%^&</li>
+                                <li id="number">1 Number</li>
+                                <li id="uppercase-char">1 Uppercase letter</li>
+                                <li id="lowercase-char">1 Lowercase letter</li>
+                            </ul>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="password-confirm">Confirm Password<i class="far fa-eye togglePassword"> Show</i></label>
+                            <input type="password" name="password-confirm" id="password-confirm" required>
+                            <p id="password-confirm-feedback">Passwords do not match</p>
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        
+                    </div>
+                    <div class="register">
+                        <button>Register</button>
+                        <p class="registered">Already have an account? <a href="#">Log in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <div class="footer"></div>
+        </footer>         
+        </div>          
     </main>
-    <footer>
-        <div class="footer"></div>
-    </footer>
 </body>
 </html>
