@@ -11,6 +11,31 @@ const passwordFeedback = document.querySelector('#password-feedback');
 const confirmPasswordFeedback = document.querySelector('#password-confirm-feedback');
 const togglePassword = document.querySelectorAll('.togglePassword');
 
+const minLength = document.querySelector('#min-length');
+const specialChars= document.querySelector('#special-chars');
+const number = document.querySelector('#number');
+const upperCaseChar = document.querySelector('#uppercase-char');
+const lowerCaseChar = document.querySelector('#lowercase-char');
+
+// // password validation
+// let validLength = false;
+// let validSpecialChars = false;
+// let validNumber = false;
+// let validUpCaseChar = false;
+// let validLowCaseChar = false;
+
+
+// Email validation
+let validEmail = false;
+
+// phone number validation
+let validPhoneNumber = false;
+
+// name validation
+let validFirstName = false;
+let validLastName = false;
+
+
 // toggle password visibility
 togglePassword.forEach(event => {
         event.addEventListener('click', function () {
@@ -47,7 +72,14 @@ password.addEventListener('blur', () => {
     if (password.value.length === 0) {
         passwordFeedback.style.visibility = 'hidden';
     }
+});
 
+password.addEventListener('keyup', () => {
+    validatePassword();
+});
+
+confirmPassword.addEventListener('keyup', () => {
+    validateConfirmPassword();
 });
 
 confirmPassword.addEventListener('focus', () => {
@@ -59,3 +91,83 @@ confirmPassword.addEventListener('blur', () => {
         confirmPasswordFeedback.style.visibility = 'hidden';
     }
 });
+
+function validatePassword() {
+    let validPasswordObjFunctions = {
+        validLength: validateLength(),
+        validSpecialChars: validateSpecialChars(),
+        validNumber: validateNumber(),
+        validUpperCaseChar: validateUpperCaseChar(),
+        validLowerCaseChar: validateLowerCaseChar(),
+    };
+
+    let validPassword = Object.values(validPasswordObjFunctions).every(value => value === true);
+
+    if (validPassword) {
+        password.style.borderColor = 'green';
+    } else {
+        password.style.borderColor = 'red';
+    }
+}
+
+function validateLength() {
+  if (password.value.length < 8) {
+    minLength.style.color = 'red';
+    return false;
+  } else {
+    minLength.style.color = 'green';
+    return true;
+  }
+}
+
+function validateSpecialChars() {
+  if (password.value.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+    specialChars.style.color = 'green';
+    return true;
+  } else {
+    specialChars.style.color = 'red';
+    return false;
+  }
+}
+
+function validateNumber() {
+  if (password.value.match(/[0-9]/)) {
+    number.style.color = 'green';
+    return true;
+  } else {
+    number.style.color = 'red';
+    return false;
+  }
+}
+
+function validateUpperCaseChar() {
+  if (password.value.match(/[A-Z]/)) {
+    upperCaseChar.style.color = 'green';
+    return true;
+  } else {
+    upperCaseChar.style.color = 'red';
+    return false;
+  }
+}
+
+function validateLowerCaseChar() {
+  if (password.value.match(/[a-z]/)) {
+    lowerCaseChar.style.color = 'green';
+    return true;
+  } else {
+    lowerCaseChar.style.color = 'red';
+    return false;
+  }
+}
+
+function comparePasswords() {
+  if (password.value === confirmPassword.value) {
+    confirmPasswordFeedback.textContent = 'Passwords match';
+    confirmPasswordFeedback.style.color = 'green';
+    return true;
+  } else {
+    confirmPasswordFeedback.textContent = 'Passwords do not match';
+    confirmPasswordFeedback.style.color = 'red';
+    return false;
+  }
+}
