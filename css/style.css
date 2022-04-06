@@ -111,6 +111,24 @@ body {
 
 }
 
+.input-focus{
+    outline: none !important;
+    border: 2px solid #1f8fbb !important;
+    box-shadow: #1f8fbb 2px 2px 2px 2px !important;
+}
+
+.error {
+    outline: none !important;
+    border: 2px solid red   !important;
+    box-shadow: red 2px 2px 2px 2px;
+}
+
+.valid {
+    outline: none !important;
+    border: 2px solid green !important;
+    box-shadow: green 2px 2px 2px 2px !important;
+}
+
 .form-group > input {
     padding: 12px 20px;
     margin: 8px 0;
@@ -119,10 +137,6 @@ body {
     border-radius: 8px;
     box-sizing: border-box;
     
-}
-
-.form-group > input:focus {
-   box-shadow: #1f8fbb 2px 2px 2px 2px;
 }
 
 .form-rows {
