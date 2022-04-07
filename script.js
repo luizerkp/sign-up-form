@@ -5,6 +5,17 @@ let date = new Date().getFullYear();
 footerPara.textContent = `Copyright © ${date} Luis Tamarez All Rights Reserved`;
 footer.appendChild(footerPara);
 
+
+const firstName = document.querySelector('#first-name');
+const firstNameFeedback = document.querySelector('#firstname-feedback');
+const lastName = document.querySelector('#last-name');
+const lastNameFeedback = document.querySelector('#lastname-feedback');
+const email = document.querySelector('#email');
+const emailFeedback = document.querySelector('#email-feedback');
+const phoneNumber = document.querySelector('#phone-number');
+const phoneNumberFeedback = document.querySelector('#phone-number-feedback');
+
+
 const password = document.querySelector('#password');
 const confirmPassword = document.querySelector('#password-confirm');
 const passwordFeedback = document.querySelector('#password-feedback');
@@ -18,6 +29,10 @@ const number = document.querySelector('#number');
 const upperCaseChar = document.querySelector('#uppercase-char');
 const lowerCaseChar = document.querySelector('#lowercase-char');
 
+const phoneValidationRegex = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]{8,14}$/g;
+const emailValidationRegex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
+const signupForm = document.querySelector('#signup-form');
 
 inputs.forEach(input => {
   input.addEventListener('focus', () => {    
@@ -31,6 +46,9 @@ inputs.forEach(input => {
       if (input.value.length === 0) {
         input.classList.toggle('input-focus');
       }
+      else if (input.id === 'first-name' || input.id === 'last-name'){
+        return;
+      }
       else {
         input.classList.remove('input-focus');
         errorStatus(input.id);
@@ -41,10 +59,8 @@ inputs.forEach(input => {
           }
         }
       }
-    }
-  );
+    });
 });
-
 
 // toggle password visibility
 togglePassword.forEach(event => {
@@ -67,9 +83,6 @@ togglePassword.forEach(event => {
             // toggle the eye slash icon 
             togglePassword[i].classList.toggle('fa-eye-slash');          
         }
-  
-        password.classList.toggle('fa-eye-slash');
-        confirmPassword.classList.toggle('fa-eye-slash');
     });
 });
 
@@ -84,6 +97,17 @@ password.addEventListener('blur', () => {
     } 
 });
 
+signupForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    inputs.forEach(input => {
+      errorStatus(input.id);
+      if (input.getAttribute('class').includes('error')) {
+        return;
+      }
+      window.location.href = './confirmation.html';
+    });
+});
+
 password.addEventListener('keyup', () => {
     validatePassword();
     if (confirmPassword.value.length > 0) {
@@ -93,6 +117,22 @@ password.addEventListener('keyup', () => {
       }        
     }
 });
+
+phoneNumber.addEventListener('keyup', () => {
+    if (phoneNumber.value.length === 0) {
+        phoneNumberFeedback.textContent = '';
+    } else {
+        validatePhoneNumber();
+    }
+  });
+
+email.addEventListener('keyup', () => {
+    if (email.value.length === 0) {
+        emailFeedback.textContent = '';
+    } else {
+        validateEmail();
+    }
+  });
 
 confirmPassword.addEventListener('keyup', () => {
     validateConfirmPassword();
@@ -108,6 +148,7 @@ confirmPassword.addEventListener('blur', () => {
     }
 });
 
+
 function errorStatus(eventId) {
   let noError = null;
   switch (eventId) {
@@ -118,10 +159,10 @@ function errorStatus(eventId) {
           noError= validatePhoneNumber();
           break;
       case 'first-name':
-          noError= validateFirstName();
+          noError= validateName();
           break;
       case 'last-name':
-          noError= validateLastName();
+          noError= validateName();
           break;
       case 'password':
           noError= validatePassword();
@@ -147,7 +188,6 @@ function errorStatus(eventId) {
 
 function checkPasswordStatus() {
   const active = confirmPassword.getAttribute('class');
-  console.log(active);
   let match = validateConfirmPassword();
   let results = true;
   if (active === 'error' && match === true) {
@@ -156,7 +196,6 @@ function checkPasswordStatus() {
   else if (active === 'valid' && match === false) {
     results = false;
   }
-  // console.log('results is ' + results);
   return results;
 }
 
@@ -251,4 +290,57 @@ function validateConfirmPassword() {
   }
   
   return validConfirmPassword;
+}
+
+function validatePhoneNumber() {
+  console.log('validating phone number');
+  if (phoneNumber.value.length === 0) {
+    return null;
+  }
+  
+  let validPhoneNumber = phoneNumber.value.match(phoneValidationRegex);
+
+  if (!validPhoneNumber) {
+    phoneNumberFeedback.textContent = 'Please enter a valid phone number';
+    phoneNumberFeedback.style.color = 'red';
+    return false;
+  } else {
+    phoneNumberFeedback.textContent = 'Phone number is valid';
+    phoneNumberFeedback.style.color = 'green';
+    return true;
+  }
+}
+
+function validateEmail() {
+  if (email.value.length === 0) {
+    return null;
+  }
+
+  let validEmail = email.value.match(emailValidationRegex);
+
+  if (!validEmail) {
+    emailFeedback.textContent = 'Please enter a valid email address';
+    emailFeedback.style.color = 'red';
+    return false;
+  } else {
+    emailFeedback.textContent = 'Email address is valid';
+    emailFeedback.style.color = 'green';
+    return true;
+  }
+}
+
+function validateName() {
+  if (firstName.value.length === 0 || lastName.value.length === 0) {
+    firstNameFeedback.textContent = 'Please enter a valid first name';
+    firstNameFeedback.style.color = 'red';
+    lastNameFeedback.textContent = 'Please enter a valid last name';
+    lastNameFeedback.style.color = 'red';
+    return false;
+  } else {
+    firstNameFeedback.textContent = 'First name is valid';
+    firstNameFeedback.style.color = 'green';
+    lastNameFeedback.textContent = 'Last name is valid';
+    lastNameFeedback.style.color = 'green';
+    return true;
+  }
 }

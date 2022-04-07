@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="login.js" defer></script>
+    <title>Login</title>
+</head>
+<body>
+    <main class="container">
+        <div class="container-left">
+            <div class="logo">
+                <img src="imgs/odin-lined.png" alt="logo of the Odin project">
+                <p>ODIN</p>
+            </div>
+            <div class="credit">
+                <p>Photo by <a href="https://unsplash.com/@lydia_mailloux">Lydia Mailloux </a>on
+                <a href="https://unsplash.com/photos/2sdU_cEOfd8" target="_blank"> Unsplash</a></p>
+            </div>
+        </div>
+        <div class="container-right">
+            <div class="main-right">
+            <div class="login">
+                    <h1>Login</h1>
+            </div>
+            <div class="form-container">
+                <form action="" method="post" id="login-form">
+                    <div class="form-rows">
+                        <div class="form-group">
+                            <label for="email">EMAIL</label>
+                            <input type="email" name="email" id="email" required>
+                            <p id="email-feedback"></p>
+                        </div>                               
+                    </div>
+                    <div class="form-rows">
+                        <div class="form-group">
+                            <div>
+                                <label for="password">Password
+                                    <span class="far fa-eye togglePassword"> Show</span>
+                                </label>
+                            </div>
+                            <input type="password" name="password" id="password" required>
+                        </div>
+                    </div>
+                    <div class="register">
+                        <button>Login</button>
+                        <p class="registered">Need an account? <a href="#index">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <div class="footer"></div>
+        </footer>         
+        </div>          
+    </main>
+</body>
+</html>

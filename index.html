@@ -30,26 +30,31 @@
                     <p>Sign up <i>now </i>to get started... <i>Adventure Awaits!!</i></p>
             </div>
             <div class="form-container">
-                <form action="/" method="post">
+                <form action="" method="post" id="signup-form">
                     <div class="form-rows">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
                             <input type="text" name="first-name" id="first-name" required>
+                            <p id="firstname-feedback"></p>
                         </div>
                         <div class="form-group">
                             <label for="last-name">Last Name</label>
                             <input type="text" name="last-name" id="last-name" required>
+                            <p id="lastname-feedback"></p>
                         </div>                    
                     </div>
                     <div class="form-rows">
                         <div class="form-group">
                             <label for="email">EMAIL</label>
                             <input type="email" name="email" id="email" required>
+                            <p id="email-feedback"></p>
                         </div>                           
                         <div class="form-group">
                             <label for="phone-number">Phone Number</label>
-                            <input type="tel" name="phone-number" id="phone-number" required>
-                        </div>            
+                            <input type="tel" name="phone-number" id="phone-number">  
+                            <p id="phone-number-feedback"></p>  
+                        </div> 
+                              
                     </div>
                     <div class="form-rows">
                         <div class="form-group">
@@ -79,7 +84,7 @@
                     </div>
                     <div class="register">
                         <button>Register</button>
-                        <p class="registered">Already have an account? <a href="#">Log in</a></p>
+                        <p class="registered">Already have an account? <a href="#login">Log in</a></p>
                     </div>
                 </form>
             </div>
