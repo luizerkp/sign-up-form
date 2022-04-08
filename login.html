@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="login.js" defer></script>
+    <script src="scripts/login.js" defer></script>
     <title>Login</title>
 </head>
 <body>
@@ -31,7 +31,8 @@
                     <div class="form-rows">
                         <div class="form-group">
                             <label for="email">EMAIL</label>
-                            <input type="email" name="email" id="email" required>
+                            <input type="email" name="email" id="email" required  oninvalid="this.setCustomValidity('Email entry required')"
+                            oninput="setCustomValidity('')">
                             <p id="email-feedback"></p>
                         </div>                               
                     </div>
@@ -42,12 +43,14 @@
                                     <span class="far fa-eye togglePassword"> Show</span>
                                 </label>
                             </div>
-                            <input type="password" name="password" id="password" required>
+                            <input type="password" name="password" id="password" required oninvalid="this.setCustomValidity('Password entry required')"
+                            oninput="setCustomValidity('')">
+                            <p id="password-feedback"></p>
                         </div>
                     </div>
                     <div class="register">
                         <button>Login</button>
-                        <p class="registered">Need an account? <a href="#index">Sign up</a></p>
+                        <p class="registered">Need an account? <a href="index.html">Sign up</a></p>
                     </div>
                 </form>
             </div>

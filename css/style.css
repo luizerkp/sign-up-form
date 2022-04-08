@@ -176,7 +176,7 @@ ul#password-feedback, #password-confirm-feedback {
     color: #302b2b;
 }
 ul#password-feedback, #password-confirm-feedback, #email-feedback, 
-#phone-number-feedback, #firstname-feedback, #lastname-feedback {
+#phone-number-feedback {
     font-size: .9rem;
     margin-top: 2px;
     padding: 0;
@@ -228,5 +228,12 @@ button:hover {
     font-weight: bold;
 }
 
-
+#github-log {
+    padding-left: 3px;
+    padding-right: 8px;
+}
+#github-log > img {
+    height: 20px;
+    width: 20px;
+}
 

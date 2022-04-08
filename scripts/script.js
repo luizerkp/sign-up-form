@@ -1,15 +1,23 @@
 // adds footer content to the page
 const footer = document.querySelector('.footer');
-const footerPara = document.createElement('p');
-let date = new Date().getFullYear();
-footerPara.textContent = `Copyright © ${date} Luis Tamarez All Rights Reserved`;
-footer.appendChild(footerPara);
+const footerPara_1 = document.createElement('p');
+const footerPara_2 = document.createElement('p');
+const a = document.createElement('a');
+a.href = "https://github.com/luizerkp";
+const githubLogo = document.createElement('img');
+githubLogo.src="imgs/GitHubMarkSmall.png"
+a.appendChild(githubLogo)
+a.setAttribute('id', 'github-log');
+const date = new Date().getFullYear();
+footerPara_1.textContent = `Copyright © ${date} Luis Tamarez`
+footerPara_2.textContent = "All Rights Reserved";
+footer.appendChild(footerPara_1);
+footer.appendChild(a);
+footer.appendChild(footerPara_2)
 
 
 const firstName = document.querySelector('#first-name');
-const firstNameFeedback = document.querySelector('#firstname-feedback');
 const lastName = document.querySelector('#last-name');
-const lastNameFeedback = document.querySelector('#lastname-feedback');
 const email = document.querySelector('#email');
 const emailFeedback = document.querySelector('#email-feedback');
 const phoneNumber = document.querySelector('#phone-number');
@@ -34,17 +42,25 @@ const emailValidationRegex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-
 
 const signupForm = document.querySelector('#signup-form');
 
+let errorObj = {
+  'first-name': false,
+  'last-name': false,
+  'email': false,
+  'password': false,
+  'password-confirm': false,
+};
+
 inputs.forEach(input => {
   input.addEventListener('focus', () => {    
     input.classList.remove('error');
     input.classList.remove('valid');
-    input.classList.toggle('input-focus');
+    input.classList.add('input-focus');
 
   });
 
   input.addEventListener('blur', () => {
       if (input.value.length === 0) {
-        input.classList.toggle('input-focus');
+        input.classList.remove('input-focus');
       }
       else if (input.id === 'first-name' || input.id === 'last-name'){
         return;
@@ -99,13 +115,15 @@ password.addEventListener('blur', () => {
 
 signupForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    inputs.forEach(input => {
-      errorStatus(input.id);
-      if (input.getAttribute('class').includes('error')) {
-        return;
-      }
+    let currentError = Object.values(errorObj).some(value => value === true);
+    if (currentError === true) {
+      alert('Please fix the errors in the form');
+      return;
+    } else {
       window.location.href = './confirmation.html';
-    });
+    }
+
+      
 });
 
 password.addEventListener('keyup', () => {
@@ -179,10 +197,12 @@ function errorStatus(eventId) {
   if (noError=== false) {
     input.classList.add('error');
     input.classList.remove('valid');
+    errorObj[eventId] = true;
   }
   else if (noError=== true) {
     input.classList.add('valid');
     input.classList.remove('error');
+    errorObj[eventId] = false;
   }
 }
 
@@ -293,7 +313,6 @@ function validateConfirmPassword() {
 }
 
 function validatePhoneNumber() {
-  console.log('validating phone number');
   if (phoneNumber.value.length === 0) {
     return null;
   }
@@ -325,22 +344,6 @@ function validateEmail() {
   } else {
     emailFeedback.textContent = 'Email address is valid';
     emailFeedback.style.color = 'green';
-    return true;
-  }
-}
-
-function validateName() {
-  if (firstName.value.length === 0 || lastName.value.length === 0) {
-    firstNameFeedback.textContent = 'Please enter a valid first name';
-    firstNameFeedback.style.color = 'red';
-    lastNameFeedback.textContent = 'Please enter a valid last name';
-    lastNameFeedback.style.color = 'red';
-    return false;
-  } else {
-    firstNameFeedback.textContent = 'First name is valid';
-    firstNameFeedback.style.color = 'green';
-    lastNameFeedback.textContent = 'Last name is valid';
-    lastNameFeedback.style.color = 'green';
     return true;
   }
 }

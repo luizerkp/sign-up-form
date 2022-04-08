@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
     <title>Register</title>
 </head>
 <body>
@@ -34,23 +34,24 @@
                     <div class="form-rows">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
-                            <input type="text" name="first-name" id="first-name" required>
-                            <p id="firstname-feedback"></p>
+                            <input type="text" name="first-name" id="first-name" required oninvalid="this.setCustomValidity('First Name required')"
+                            oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="last-name">Last Name</label>
-                            <input type="text" name="last-name" id="last-name" required>
-                            <p id="lastname-feedback"></p>
+                            <input type="text" name="last-name" id="last-name" required oninvalid="this.setCustomValidity('Last Name required')"
+                            oninput="setCustomValidity('')">
                         </div>                    
                     </div>
                     <div class="form-rows">
                         <div class="form-group">
                             <label for="email">EMAIL</label>
-                            <input type="email" name="email" id="email" required>
+                            <input type="email" name="email" id="email" required oninvalid="this.setCustomValidity('Valid Email required')"
+                            oninput="setCustomValidity('')">
                             <p id="email-feedback"></p>
                         </div>                           
                         <div class="form-group">
-                            <label for="phone-number">Phone Number</label>
+                            <label for="phone-number">Phone Number (optional)</label>
                             <input type="tel" name="phone-number" id="phone-number">  
                             <p id="phone-number-feedback"></p>  
                         </div> 
@@ -63,7 +64,8 @@
                                     <span class="far fa-eye togglePassword"> Show</span>
                                 </label>
                             </div>
-                            <input type="password" name="password" id="password" required>
+                            <input type="password" name="password" id="password" required oninvalid="this.setCustomValidity('Valid password required')"
+                            oninput="setCustomValidity('')">
                             <ul id="password-feedback">
                                 <li id="min-length">At least 8 character</li>
                                 <li id="special-chars">1 Special character: @_!#$%^&</li>
@@ -78,13 +80,14 @@
                                     <span class="far fa-eye togglePassword"> Show</span>
                                 </label>
                             </div>
-                            <input type="password" name="password-confirm" id="password-confirm" required>
+                            <input type="password" name="password-confirm" id="password-confirm" required oninvalid="this.setCustomValidity('Password confirmation required')"
+                            oninput="setCustomValidity('')">
                             <p id="password-confirm-feedback"></p>
                         </div>
                     </div>
                     <div class="register">
                         <button>Register</button>
-                        <p class="registered">Already have an account? <a href="#login">Log in</a></p>
+                        <p class="registered">Already have an account? <a href="login.html">Log in</a></p>
                     </div>
                 </form>
             </div>
