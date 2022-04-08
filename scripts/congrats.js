@@ -5,7 +5,7 @@ const footerPara_2 = document.createElement('p');
 const a = document.createElement('a');
 a.href = "https://github.com/luizerkp";
 const githubLogo = document.createElement('img');
-githubLogo.src="imgs/GitHubMarkSmall.png"
+githubLogo.src = "imgs/GitHubMarkSmall.png"
 a.appendChild(githubLogo)
 a.setAttribute('id', 'github-log');
 let date = new Date().getFullYear();
@@ -16,8 +16,8 @@ footer.appendChild(a);
 footer.appendChild(footerPara_2)
 
 
-window.onload = function() {
-    window.setTimeout(() => {
-        window.location.href = './login.html';
-      }, 5000);
+window.onload = function () {
+  window.setTimeout(() => {
+    window.location.href = './login.html';
+  }, 5000);
 }
